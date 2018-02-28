@@ -1,5 +1,6 @@
 import turtle
 from turtle import *
+import time
 
 penup()
 getscreen().setup(1.0,1.0)
@@ -15,6 +16,7 @@ sec=100
 goto(-500,290)
 y=290
 x=-500
+turtle.speed(999999)
 def make_columns(width, list):
 	global y
 	for i in range(6):
@@ -52,6 +54,25 @@ while times<6:
 	y=290
 	times=times+1
 
+
+def win(testing_color):
+	if testing_color=="yellow":
+		checking_color=0:
+		x=0
+		y=0
+		for x in columns():
+			for y in x():
+				if y.color==testing color:
+					checking_color=checking_color+1
+					if checking_color==4:
+						write("checking_color wins!")
+						time.sleep(2)
+						quit()
+
+		z=0
+		checking_color=0
+		for z in range()
+
 def turn(color,row):
 	chosen=columns[row]
 	if color==0:
@@ -80,12 +101,16 @@ def turn(color,row):
 turns=0
 while turns<36:
 	if turns%2==0:	
-		rowy=input("What row yellow?")
-		turn(turns,rowy)
+		rowy=textinput("What row yellow?", "Please enter a number")
+		if "rowy".isdigit():
+			turn(turns,rowy)
 	else:
-		rowrd=input("What row red?")
-		turn(turns,rowrd)
+		rowrd=textinput("What row red?", "Please enter a number")
+		if "rowrd".isdigit():
+			turn(turns,rowrd)
 	turns=turns+1
 
+if turns==36:
+	quit( )
 
 mainloop()
