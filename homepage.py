@@ -23,7 +23,7 @@ def choose_screen(screen_num):
 			print("1")
 
 		if desicion==2:
-			#snake()
+			os.system("python snake.py")
 			print("1")
 
 		if desicion==3:
@@ -40,11 +40,11 @@ def choose_screen(screen_num):
 			screen1()
 
 		if desicion==1:
-			os.system('python personalproj.py')
+			os.system('python agario.py')
 			print("1")
 
 		if desicion==2:
-			#memory_game()
+			os.system('python hangman.py')
 			print("1")
 
 		if desicion==3:
@@ -104,7 +104,7 @@ def screen2():
 	goto(-500,0)
 	write("Agario(1)", move=False, align="left", font=("Arial", 20, "normal"))
 	goto(-110,0)
-	write("Memory(2)", move=False, align="left", font=("Arial", 20, "normal"))
+	write("Hangman(2)", move=False, align="left", font=("Arial", 20, "normal"))
 	goto(250,0)
 	write("Bubble burst(3)", move=False, align="left", font=("Arial", 20, "normal"))
 	goto(450,-100)

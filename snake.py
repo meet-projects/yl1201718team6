@@ -89,10 +89,10 @@ turtle.onkeypress(right,RIGHT_ARROW)
 turtle.listen()
 
 def make_food():
-    min_x = -int(1500/2/SQUARE_SIZE)+1
-    max_x = int(1500/2/SQUARE_SIZE)-1
-    min_y = -int(1500/2/SQUARE_SIZE)-1
-    max_y = int(1500/2/SQUARE_SIZE)+1
+    min_x = -int(900/2/SQUARE_SIZE)+1
+    max_x = int(900/2/SQUARE_SIZE)-1
+    min_y = -int(450/2/SQUARE_SIZE)-1
+    max_y = int(450/2/SQUARE_SIZE)+1
 
     food_x = random.randint(min_x,max_x)*SQUARE_SIZE
     food_y = random.randint(min_y,max_y)*SQUARE_SIZE
@@ -178,6 +178,5 @@ for this_food_pos in food_pos:
     food_stamps.append(new_stamp)
 
 
-
-
+turtle.mainloop()
 

@@ -2,6 +2,8 @@ import turtle
 import random
 import time
 from turtle import *
+
+getscreen()
 turtle.ht()
 turtle.tracer(0)
 turtle.setup( width = 1500, height = 1500, startx = None, starty = None)
@@ -54,10 +56,10 @@ def playing ():
 	global trys_left
 	
 	while trys_left>0:
-		letter_given = textinput("guess a letter")
+		letter_given = textinput("guess a letter", 'Guess a letter!')
 		if letter_given in letter:
 			print ("You already guessed that")
-			letter_given = textinput("guess another letter")
+			letter_given = textinput("guess another letter", "Guess another letter!")
 
 		letter.append(letter_given)
 

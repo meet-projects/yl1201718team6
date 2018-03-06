@@ -22,7 +22,6 @@ def make_columns(width, listnum):
 	for i in range(6):
 		h=turtle.clone()
 		columns[listnum].append(h)
-		print(listnum)
 		y=y-125
 		goto(width,y)
 
@@ -55,21 +54,22 @@ while times<6:
 ht()
 
 def win(testing_color):
-	if testing_color=="Yellow":
+	if testing_color=="yellow":
 		checking_color=0
 		x=0
 		y=0
 		winning=0
 		for x in columns:
 			for y in x:
-				if y.color=="yellow":
+				if y=='yellow':
+					print("Function works")
 					checking_color=checking_color+1
 					winning=winning+1
 				else:
 					winning=0
-					print(winning)
 
 				if checking_color==4 and winning==4:
+					goto(-50,0)
 					write("checking_color wins!")
 					time.sleep(2)
 					quit()
@@ -135,7 +135,7 @@ def win(testing_color):
 def turn(color,colu):
 
 	if color==0:
-		new_color="Yellow"
+		new_color="yellow"
 		color_list=YELLOW_DISCS
 		chosen=columns[colu-1]
 		print(chosen)
