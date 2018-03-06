@@ -17,11 +17,12 @@ goto(-500,290)
 y=290
 x=-500
 turtle.speed(999999)
-def make_columns(width, list):
+def make_columns(width, listnum):
 	global y
 	for i in range(6):
 		h=turtle.clone()
-		columns[i].append(h)
+		columns[listnum].append(h)
+		print(listnum)
 		y=y-125
 		goto(width,y)
 
@@ -33,6 +34,7 @@ column2=[]
 column3=[]
 column4=[]
 column5=[]
+colored_holes=[1]
 
 columns.append(column0)
 columns.append(column1)
@@ -44,7 +46,7 @@ columns.append(column5)
 
 while times<6:
 
-	make_columns(x,columns[times] )
+	make_columns(x,times )
 	x=x+185
 	turtle.goto(x,290)
 	y=290
@@ -53,18 +55,19 @@ while times<6:
 ht()
 
 def win(testing_color):
-	if testing_color=="yellow":
+	if testing_color=="Yellow":
 		checking_color=0
 		x=0
 		y=0
 		winning=0
-		for x in columns():
-			for y in x():
+		for x in columns:
+			for y in x:
 				if y.color=="yellow":
 					checking_color=checking_color+1
 					winning=winning+1
 				else:
 					winning=0
+					print(winning)
 
 				if checking_color==4 and winning==4:
 					write("checking_color wins!")
@@ -89,10 +92,6 @@ def win(testing_color):
 					write("checking_color wins!")
 					time.sleep(2)
 					quit()
-
-
-
-
 
 
 
@@ -134,32 +133,34 @@ def win(testing_color):
 						quit()
 
 def turn(color,colu):
+
 	if color==0:
 		new_color="Yellow"
 		color_list=YELLOW_DISCS
 		chosen=columns[colu-1]
 		print(chosen)
+
 	else:
 		new_color="Red"
 		color_list=RED_DISCS
 		chosen=columns[colu-1]
+
 	posx=5
 	found=True
 	color_ones=0
 	while found==True and posx!=0:
-		if chosen[posx].color=="Red" or chosen[posx].color=="Yellow":
-			chosen[posx].color="new_color"
-			color_list.append(posx-1)
-			color_ones=color+1
-			print(posx)
-		else:
+		if chosen[posx] not in colored_holes:
 			print("True")
-			chosen[posx].color=new_color
+			chosen[posx].color(new_color)
 			found=False
-		posx=posx+1
+			colored_holes.append(chosen[posx])
+			print(colored_holes)
+			win(new_color)
+		posx=posx-1
 
 		if color_ones==6:
 			found=False
+
 			write("Choose a different column! This one is full!")
 
 
