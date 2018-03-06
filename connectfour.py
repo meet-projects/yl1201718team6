@@ -44,15 +44,13 @@ columns.append(column5)
 
 while times<6:
 
-	if times==6:
-		turtle.hideturtle()
-
 	make_columns(x,columns[times] )
 	x=x+185
 	turtle.goto(x,290)
 	y=290
 	times=times+1
 
+ht()
 
 def win(testing_color):
 	if testing_color=="yellow":
@@ -135,24 +133,31 @@ def win(testing_color):
 						time.sleep(2)
 						quit()
 
-def turn(color,row):
-	if colorturn==0:
+def turn(color,colu):
+	if color==0:
 		new_color="Yellow"
 		color_list=YELLOW_DISCS
-		chosen=columns[rowy]
+		chosen=columns[colu-1]
+		print(chosen)
 	else:
 		new_color="Red"
 		color_list=RED_DISCS
-		chosen=columns[rowrd]
-	position_x=0
+		chosen=columns[colu-1]
+	posx=5
 	found=True
 	color_ones=0
-	while found==True and position_x<5:
-		for position_x in range(len(chosen)):
-			if chosen[position_x].color=="Red" or chosen[position_x].color=="Yellow":
-				chosen[position_x-1].color="new_color"
-				color_list.append(position_x-1)
-				color_ones=color+1
+	while found==True and posx!=0:
+		if chosen[posx].color=="Red" or chosen[posx].color=="Yellow":
+			chosen[posx].color="new_color"
+			color_list.append(posx-1)
+			color_ones=color+1
+			print(posx)
+		else:
+			print("True")
+			chosen[posx].color=new_color
+			found=False
+		posx=posx+1
+
 		if color_ones==6:
 			found=False
 			write("Choose a different column! This one is full!")
@@ -165,12 +170,12 @@ turns=0
 while turns<36:
 	colorturn=turns%2
 	if colorturn==0:	
-		rowy=int(textinput("What row yellow?", "Please enter a number"))
-		print(rowy)
-		turn(colorturn,rowy)
+		coly=int(textinput("What column yellow?", "Please enter a number"))
+		print(coly)
+		turn(colorturn,coly)
 	else:
-		rowrd=int(textinput("What row red?", "Please enter a number"))
-		turn(colorturn,rowrd)
+		colrd=int(textinput("What column red?", "Please enter a number"))
+		turn(colorturn,colrd)
 	turns=turns+1
 
 if turns==36:
