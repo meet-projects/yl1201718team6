@@ -43,6 +43,9 @@ columns.append(column4)
 columns.append(column5)
 
 
+
+pencolor("magenta")
+
 while times<6:
 
 	make_columns(x,times )
@@ -58,11 +61,59 @@ def win(testing_color):
 		checking_color=0
 		x=0
 		y=0
+		p=0
 		winning=0
 		for x in columns:
 			for y in x:
-				if y=='yellow':
+				if y.color()[0]=='yellow':
 					print("Function works")
+					checking_color=checking_color+1
+					winning=winning+1
+				else:
+					winning=0
+					print(p)
+					print(y)
+					p+=1
+
+				if checking_color==4 and winning==4:
+					goto(-50,0)
+					write("Yellow wins!", move=False, align="left", font=("Arial", 20, "bold"))
+					time.sleep(2)
+					quit()
+
+
+
+		checking_color=0
+		winning=0 
+		
+		for z in range(6):
+			for d in range(6):
+				if columns[d][z].color()[0]=="yellow":
+					checking_color=checking_color+1
+					winning=winning+1
+
+				else:
+					winning=0
+
+				if checking_color==4 and winning==4:
+					goto(-50,0)
+					write("Yellow wins!",move=False, align="left", font=("Arial", 20, "bold"))
+					time.sleep(2)
+					quit()
+
+		check_diag_color="yellow"
+		check_diagonal1(check_diag_color,0)
+		check_diagonal1(check_diag_color,1)
+
+
+	if testing_color=="red":
+		checking_color=0
+		x=0
+		y=0
+		winning=checking_color
+		for x in columns():
+			for y in x():
+				if y.color()[0]=="red":
 					checking_color=checking_color+1
 					winning=winning+1
 				else:
@@ -70,7 +121,7 @@ def win(testing_color):
 
 				if checking_color==4 and winning==4:
 					goto(-50,0)
-					write("checking_color wins!")
+					write("Red wins!",move=False, align="left", font=("Arial", 20, "bold"))
 					time.sleep(2)
 					quit()
 
@@ -81,46 +132,7 @@ def win(testing_color):
 		
 		for z in range(6):
 			for d in range(6):
-				if columns[d][z]=="yellow":
-					checking_color=checking_color+1
-					winning=winning+1
-
-				else:
-					winning=0
-
-				if checking_color==4 and winning==4:
-					write("checking_color wins!")
-					time.sleep(2)
-					quit()
-
-
-
-	if testing_color=="red":
-		checking_color=0
-		x=0
-		y=0
-		winning=0
-		for x in columns():
-			for y in x():
-				if y.color=="red":
-					checking_color=checking_color+1
-					winning=winning+1
-				else:
-					winning=0
-
-				if checking_color==4 and winning==4:
-					write("checking_color wins!")
-					time.sleep(2)
-					quit()
-
-
-
-		checking_color=0
-		winning=0 
-		
-		for z in range(6):
-			for d in range(6):
-				if columns[d][z]=="red":
+				if columns[d][z].color()[0]=="red":
 						checking_color=checking_color+1
 						winning=winning+1
 
@@ -128,12 +140,37 @@ def win(testing_color):
 					winning=0
 
 					if checking_color==4 and winning==4:
-						write("checking_color wins!")
+						goto(-50,0)
+						write("Red wins!",move=False, align="left", font=("Arial", 20, "bold"))
 						time.sleep(2)
 						quit()
 
-def turn(color,colu):
+		check_diag_color="red"
+		check_diagonal1(check_diag_color,0)
+		check_diagonal1(check_diag_color,1)
 
+
+def check_diagonal1(colorname, direction):
+	print(colorname)
+	for j in range(3):
+		if direction==0:
+			for l in range(3,7,-1):
+				if columns[j][l].color()[0]==columns[j-1][l+1].color()[0]==columns[j-2][l+2].color()[0]==columns[j-3][l+3].color()[0]==colorname.lower():
+					goto(-50,0)
+					write(colorname + " wins!",move=False, align="left", font=("Arial", 20, "bold"))
+					time.sleep(2)
+					quit()
+
+
+		else:
+			for h in range(3):
+				if columns[j][h].color()[0]==columns[j+1][h+1].color()[0]==columns[j+2][h+2].color()[0]==columns[j+3][h+3].color()[0]==colorname.lower():
+					goto(-50,0)
+					write(colorname+" wins!",move=False, align="left", font=("Arial", 20, "bold"))
+					time.sleep(2)
+					quit()
+
+def turn(color,colu):
 	if color==0:
 		new_color="yellow"
 		color_list=YELLOW_DISCS
@@ -158,7 +195,7 @@ def turn(color,colu):
 			win(new_color)
 		posx=posx-1
 
-		if color_ones==6:
+		if len(colored_holes)==7:
 			found=False
 
 			write("Choose a different column! This one is full!")

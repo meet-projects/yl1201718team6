@@ -2,16 +2,15 @@ from turtle import *
 import turtle
 import random
 import os
+import subprocess
+import time
 turtle.tracer(1,0)
 
 getscreen().setup(1.0,1.0)
 penup()
 hideturtle()
-bgcolor("pink")
-money=100
-goto(0,0)
-pencolor("deepskyblue")
-write("Money = money", move=False, align="left", font=("Arial", 20, "bold"))
+bgcolor("black")
+
 
 
 
@@ -19,15 +18,31 @@ def choose_screen(screen_num):
 	desicion=int(textinput("What would you like to do?", "Please enter a number"))
 	if screen_num==0:
 		if desicion==1:
-			#connect_four()
+			child = subprocess.Popen(['python3', 'connectfour.py'])
+			while child.poll() is not None:
+				print("CONNECT FOUR IS STILL RUNNING GIRL")
+				time.sleep(1)
+
+			choose_screen(0)
 			print("1")
 
 		if desicion==2:
-			os.system("python snake.py")
+			child = subprocess.Popen(['python3', 'snake.py'])
+			while child.poll() is not None:
+				print("SNAKE IS STILL RUNNING GIRL")
+				time.sleep(1)
+
+			choose_screen(0)
 			print("1")
 
 		if desicion==3:
-			#pac_man()
+			child = subprocess.Popen(['python3', 'pacman.py'])
+			while child.poll() is not None:
+				print("PACMAN IS STILL RUNNING GIRL")
+				time.sleep(1)
+
+			choose_screen(0)
+			
 			print("1")
 
 		if desicion==4:
@@ -40,15 +55,31 @@ def choose_screen(screen_num):
 			screen1()
 
 		if desicion==1:
-			os.system('python agario.py')
+			child = subprocess.Popen(['python3', 'agario.py'])
+			while child.poll() is not None:
+				print("AGARIO IS STILL RUNNING GIRL")
+				time.sleep(1)
+
+			choose_screen(1)
 			print("1")
 
 		if desicion==2:
-			os.system('python hangman.py')
+			child = subprocess.Popen(['python3', 'hangman.py'])
+			while child.poll() is not None:
+				print("SNAKE IS STILL RUNNING GIRL")
+				time.sleep(1)
+
+			choose_screen(1)
 			print("1")
 
 		if desicion==3:
-			os.system('python bubbleburstcorrect.py')
+			child = subprocess.Popen(['python3', 'bubbleburstcorrect.py'])
+			while child.poll() is not None:
+				print("FUBBLES IS STILL RUNNING GIRL")
+				time.sleep(1)
+
+			choose_screen(1)
+			
 			print("1")
 
 		if desicion==4:
@@ -61,26 +92,42 @@ def choose_screen(screen_num):
 			print("1")
 
 		if desicion==1:
-			#football()
+			child = subprocess.Popen(['python3', 'food_drop.py'])
+			while child.poll() is not None:
+				print("FOOD DROP IS STILL RUNNING GIRL")
+				time.sleep(1)
+
+			choose_screen(2)
 			print("1")
 
 		if desicion==2:
-			#tic_tac_toe()
+			child = subprocess.Popen(['python3', 'tictac.py'])
+			while child.poll() is not None:
+				print("TIC TAC TOE IS STILL RUNNING GIRL")
+				time.sleep(1)
+
+			choose_screen(2)
+			
 			print("1")
 			
 		if desicion==3:
-			#pong()
+			child = subprocess.Popen(['python3', 'surprise.py'])
+			while child.poll() is not None:
+				print("Surprise IS STILL RUNNING GIRL")
+				time.sleep(1)
+
+			choose_screen(2)
 			print("1")
 
 
 
 def screen1():
 	clear()
-	goto(-125,150)
+	goto(-225,150)
 	pencolor("deepskyblue")
-	write("GAME X", move=False, align="left", font=("Arial", 50, "bold"))
+	write("ALL IN ONE", move=False, align="left", font=("Arial", 50, "bold"))
 	pencolor("orange")
-	goto(-125,110)
+	goto(-175,110)
 	write("Choose a game", move=False, align="left", font=("Arial", 30, "bold"))
 	pencolor("darkmagenta")
 	goto(-500,0)
@@ -120,11 +167,11 @@ def screen3():
 	write("Choose a game", move=False, align="left", font=("Arial", 30, "bold"))
 	pencolor("darkmagenta")
 	goto(-500,0)
-	write("Football(1)", move=False, align="left", font=("Arial", 20, "normal"))
+	write("Food drop(1)", move=False, align="left", font=("Arial", 20, "normal"))
 	goto(-110,0)
 	write("Tic tac toe(2)", move=False, align="left", font=("Arial", 20, "normal"))
 	goto(250,0)
-	write("Pong(3)", move=False, align="left", font=("Arial", 20, "normal"))
+	write("Surprise(3)", move=False, align="left", font=("Arial", 20, "normal"))
 	goto(-550,-100)
 	write("Go back(0)", move=False, align="left", font=("Arial", 18, "normal"))
 	choose_screen(2)

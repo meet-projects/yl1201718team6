@@ -148,7 +148,7 @@ def move_catcher():
 ##    catcher.clearstamp(old_stamp)
 ##    pos_list.pop(0)
 ##
-food_type_list=['food-chicken_nagets.gif','food-hotdog.gif','food-coffie.gif','food-chicken.gif','food-hamburger.gif', 'food-icecream.gif', 'banana.gif','food-sandwish.gif', 'food-pizza.gif']#'food-chicken_nugets'#]
+food_type_list=['food-chicken_nagets.gif','food-hotdog.gif','food-coffie.gif','food-chicken.gif','food-hamburger.gif', 'food-icecream.gif','food-sandwish.gif', 'food-pizza.gif']#'food-chicken_nugets'#]
 food_list = []
 step = 25
 bottom = -WINDOW_SIZE_Y/2 + 50
@@ -158,7 +158,7 @@ turtle.register_shape('food-coffie.gif')
 turtle.register_shape('food-chicken.gif')
 turtle.register_shape('food-hamburger.gif')
 turtle.register_shape('food-icecream.gif')
-turtle.register_shape('banana.gif')
+
 turtle.register_shape('food-pizza.gif')
 turtle.register_shape('food-sandwish.gif')
 #turtle.register_shape('food-icecream.gif')

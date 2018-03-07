@@ -3,7 +3,7 @@ import random
 import time
 from turtle import *
 
-getscreen()
+
 turtle.ht()
 turtle.tracer(0)
 turtle.setup( width = 1500, height = 1500, startx = None, starty = None)
@@ -47,7 +47,7 @@ word = words[i]
 turtle.goto(0,-200)
 for b in range(len (word)):
 	turtle.pd()
-	turtle.forward(50)
+	turtle.forward(40)
 	turtle.pu()
 	turtle.forward(30)
 
@@ -72,7 +72,7 @@ def playing ():
 					letterdrawer.goto(0,-200)
 					for g in range(u):
 						letterdrawer.pu()
-						letterdrawer.forward(50)
+						letterdrawer.forward(40)
 						letterdrawer.forward(30)
 					letterdrawer.write(letter_given,move= False, font=("Papyrus", 20, "normal"))
 			for i in range (len(word)):
@@ -83,9 +83,9 @@ def playing ():
 						title.goto(-170,150)
 						title.color("red")
 						title.write("YOU WONNNNNN" ,move= False, font=("Papyrus", 40, "normal"))
-						time.sleep(5)
+						time.sleep(3)
 						turtle.bye()
-
+						
 				else:
 					
 					break
